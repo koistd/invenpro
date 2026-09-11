@@ -1,0 +1,88 @@
+================================================================
+   INVENTORY & PROCUREMENT MANAGEMENT SYSTEM
+   TEST CASES - PROJECT REPORT
+================================================================
+
+
+TABLE 1: TEST CASES
+================================================================
+
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC ID    | Module               | Test Description                 | Steps to Execute                                 | Expected Result                          | Status |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-01    | Authentication       | Valid login with correct         | 1. Open /login page                              | User is redirected to Dashboard          | Pass   |
+|          |                      | credentials                      | 2. Enter valid email & password                  |                                          |        |
+|          |                      |                                  | 3. Click Login button                            |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-02    | Authentication       | Invalid login with wrong         | 1. Open /login page                              | Error message displayed:                 | Pass   |
+|          |                      | credentials                      | 2. Enter wrong email or password                 | "Login failed. Please check your         |        |
+|          |                      |                                  | 3. Click Login button                            | credentials."                            |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-03    | Item Management      | Add a new inventory item         | 1. Go to Items page                              | New item appears in the item list        | Pass   |
+|          |                      |                                  | 2. Fill in item name, SKU, category, unit        |                                          |        |
+|          |                      |                                  | 3. Click Submit                                  |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-04    | Item Management      | Update an existing item          | 1. Select an existing item from list             | Item details are updated successfully    | Pass   |
+|          |                      |                                  | 2. Edit the required fields                      |                                          |        |
+|          |                      |                                  | 3. Click Save Changes                            |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-05    | Item Management      | Delete an existing item          | 1. Select an existing item from list             | Item is removed from the list            | Pass   |
+|          |                      |                                  | 2. Click Delete button                           |                                          |        |
+|          |                      |                                  | 3. Confirm deletion                              |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-06    | Stock Management     | Inward stock entry               | 1. Select an item                                | Item stock quantity increases correctly  | Pass   |
+|          |                      |                                  | 2. Enter inward quantity                         |                                          |        |
+|          |                      |                                  | 3. Submit the form                               |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-07    | Stock Management     | Outward stock with               | 1. Select item with available stock              | Stock quantity decreases correctly       | Pass   |
+|          |                      | sufficient stock                 | 2. Enter valid outward quantity                  |                                          |        |
+|          |                      |                                  | 3. Submit the form                               |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-08    | Stock Management     | Outward stock with               | 1. Select item with low stock                    | Error: "Outward quantity cannot exceed   | Pass   |
+|          |                      | insufficient stock               | 2. Enter quantity exceeding current stock        | current stock."                          |        |
+|          |                      |                                  | 3. Submit the form                               |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-09    | Purchase Requests    | Submit a new purchase            | 1. Go to Purchase Requests page                  | Request appears with status: Submitted   | Pass   |
+|          |                      | request                          | 2. Select item and enter quantity                |                                          |        |
+|          |                      |                                  | 3. Add justification and submit                  |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-10    | Approvals            | Approve a purchase request       | 1. Open a pending purchase request               | Request status changes to: Approved      | Pass   |
+|          |                      |                                  | 2. Click Approve button                          |                                          |        |
+|          |                      |                                  | 3. Confirm action                                |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-11    | Approvals            | Reject a purchase request        | 1. Open a pending purchase request               | Request status changes to: Rejected      | Pass   |
+|          |                      |                                  | 2. Click Reject button                           |                                          |        |
+|          |                      |                                  | 3. Confirm action                                |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+| TC-12    | Supplier Management  | Add a new supplier               | 1. Go to Suppliers page                          | Supplier appears in the supplier list    | Pass   |
+|          |                      |                                  | 2. Fill in supplier name, email, phone, address  |                                          |        |
+|          |                      |                                  | 3. Click Submit                                  |                                          |        |
++----------+----------------------+----------------------------------+--------------------------------------------------+------------------------------------------+--------+
+
+
+================================================================
+
+
+TABLE 2: BUG TRACKING TEMPLATE
+================================================================
+
++--------+----------------------+--------------------------------------------------------------+----------+-------------+-------------+
+| Bug ID | Module               | Description                                                  | Severity | Status      | Assigned To |
++--------+----------------------+--------------------------------------------------------------+----------+-------------+-------------+
+| BUG-01 | Authentication       | Session does not expire after logout; back button restores   | High     | Closed      | Developer   |
+|        |                      | the authenticated state without re-login                     |          |             |             |
++--------+----------------------+--------------------------------------------------------------+----------+-------------+-------------+
+| BUG-02 | Stock Management     | Outward stock entry allows negative quantity values to be    | Medium   | In Progress | Developer   |
+|        |                      | submitted without showing a validation error                 |          |             |             |
++--------+----------------------+--------------------------------------------------------------+----------+-------------+-------------+
+| BUG-03 | Item Management      | Item list does not refresh automatically after a new item    | Low      | Open        | Developer   |
+|        |                      | is added; requires manual page reload to reflect changes     |          |             |             |
++--------+----------------------+--------------------------------------------------------------+----------+-------------+-------------+
+| BUG-04 | Purchase Requests    | Approved request status reverts to Pending after page        | High     | In Progress | Developer   |
+|        |                      | refresh due to missing state persistence in frontend         |          |             |             |
++--------+----------------------+--------------------------------------------------------------+----------+-------------+-------------+
+
+
+================================================================
+   END OF TEST CASES & BUG TRACKING REPORT
+================================================================

@@ -1,0 +1,37 @@
+from django.urls import path
+from .views import (
+    CategoryListCreateView, CategoryDetailView, UnitListCreateView, UnitDetailView,
+    ItemListCreateView, ItemDetailView,
+    StockInwardView, StockOutwardView,
+    PurchaseRequestListCreateView, PurchaseRequestDetailView,
+    ApprovalUpdateView,
+    SupplierListCreateView, SupplierDetailView,
+    QuotationListCreateView, QuotationDetailView,
+    PurchaseOrderListCreateView, PurchaseOrderDetailView, PurchaseOrderReceiveView,
+    PaymentListCreateView, PaymentDetailView,
+    DashboardStatsView,
+)
+
+urlpatterns = [
+    path('dashboard/', DashboardStatsView.as_view(), name='dashboard'),
+    path('categories/', CategoryListCreateView.as_view(), name='categories'),
+    path('categories/<int:pk>/', CategoryDetailView.as_view(), name='category-detail'),
+    path('units/', UnitListCreateView.as_view(), name='units'),
+    path('units/<int:pk>/', UnitDetailView.as_view(), name='unit-detail'),
+    path('items/', ItemListCreateView.as_view(), name='item-list'),
+    path('items/<int:pk>/', ItemDetailView.as_view(), name='item-detail'),
+    path('stock/inward/', StockInwardView.as_view(), name='stock-inward'),
+    path('stock/outward/', StockOutwardView.as_view(), name='stock-outward'),
+    path('requests/', PurchaseRequestListCreateView.as_view(), name='purchase-request-list'),
+    path('requests/<int:pk>/', PurchaseRequestDetailView.as_view(), name='purchase-request-detail'),
+    path('approvals/', ApprovalUpdateView.as_view(), name='approval-update'),
+    path('suppliers/', SupplierListCreateView.as_view(), name='supplier-list'),
+    path('suppliers/<int:pk>/', SupplierDetailView.as_view(), name='supplier-detail'),
+    path('quotations/', QuotationListCreateView.as_view(), name='quotation-list'),
+    path('quotations/<int:pk>/', QuotationDetailView.as_view(), name='quotation-detail'),
+    path('orders/', PurchaseOrderListCreateView.as_view(), name='order-list'),
+    path('orders/<int:pk>/', PurchaseOrderDetailView.as_view(), name='order-detail'),
+    path('orders/<int:pk>/receive/', PurchaseOrderReceiveView.as_view(), name='order-receive'),
+    path('payments/', PaymentListCreateView.as_view(), name='payment-list'),
+    path('payments/<int:pk>/', PaymentDetailView.as_view(), name='payment-detail'),
+]
