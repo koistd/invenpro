@@ -1,6 +1,9 @@
 export function extractError(error, fallback = 'Something went wrong.') {
   const data = error?.response?.data;
-  if (!data) return fallback;
+  if (!data) {
+    if (error?.code === 'ERR_NETWORK') return 'Cannot connect to the server. Please try again.';
+    return fallback;
+  }
   if (typeof data === 'string') return data;
   if (data.error) return data.error;
   if (data.detail) return data.detail;
