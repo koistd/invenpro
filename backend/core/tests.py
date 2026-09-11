@@ -22,6 +22,14 @@ class AuthenticationTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('access', response.data)
 
+    def test_login_normalizes_email(self):
+        response = self.client.post(reverse('login'), {
+            'email': '  TEST@TEST.COM ',
+            'password': 'Test@1234'
+        })
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('access', response.data)
+
     # TC-02: Invalid Login
     def test_invalid_login(self):
         response = self.client.post(reverse('login'), {
